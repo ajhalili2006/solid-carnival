@@ -15,6 +15,12 @@ jobs:
       - name: Setup Railway CLI
         uses: MadeByThePinsHub/setup-railway-cli-action@main
       - run: pwd && railway --help
+  default-noaction:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo sh -c "$(curl -sSL https://raw.githubusercontent.com/railwayapp/cli/master/install.sh)"
+      - run: railway --version && railway --help
   npm-install:
     runs-on: ubuntu-latest
     steps:
@@ -24,3 +30,8 @@ jobs:
         with:
            npm-mode: true
       - run: pwd && railway --help
+  npm-install-noaction:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo npm i -g @railway/app && railway --version
