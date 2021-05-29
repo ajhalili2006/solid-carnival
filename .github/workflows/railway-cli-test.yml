@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-  hello-world:
+  default:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -14,4 +14,13 @@ jobs:
       # README to work.
       - name: Setup Railway CLI
         uses: MadeByThePinsHub/setup-railway-cli-action@main
+      - run: pwd && railway --help
+  npm-install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install with NPM
+        uses: MadeByThePinsHub/setup-railway-cli-action@main
+        with:
+           npm-mode: true
       - run: pwd && railway --help
