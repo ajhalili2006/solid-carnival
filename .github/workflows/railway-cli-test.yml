@@ -1,0 +1,17 @@
+name: Test Railway CLI install
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # Since this is shiny new project, proceed at your own risk!
+      # Also we need contributors for make these config below in the
+      # README to work.
+      - name: Setup Railway CLI
+        uses: MadeByThePinsHub/setup-railway-cli-action@main
+      - run: pwd && railway --help
