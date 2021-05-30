@@ -34,4 +34,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: sudo npm i -g @railway/app && railway --version
+      - run: |
+          mkdir $GITHUB_WORKSPACE/.npm-global
+          NPM_CONFIG_PREFIX=$GITHUB_WORKSPACE/.npm-global npm i -g @railway/cli
+          export PATH=$GITHUB_WORKSPACE/.npm-global:$PATH
+          railway --version
+  build-from-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build CLI from source
+        uses: MadeByThePinsHub/setup-railway-cli-action@main
+        with:
+          repo-url: https://github.com/railwayapp/cli
+          repo-branch: master
+      - run: railway --help
