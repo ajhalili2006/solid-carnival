@@ -37,8 +37,7 @@ jobs:
       - run: |
           mkdir $GITHUB_WORKSPACE/.npm-global
           NPM_CONFIG_PREFIX=$GITHUB_WORKSPACE/.npm-global npm i -g @railway/cli
-          export PATH=$GITHUB_WORKSPACE/.npm-global:$PATH
-          railway --version
+          $GITHUB_WORKSPACE/.npm-global/bin/railway --version
   build-from-source:
     runs-on: ubuntu-latest
     steps:
