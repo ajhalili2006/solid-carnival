@@ -1,0 +1,5 @@
+#!/bin/bash
+
+date | base64 > trigger-rebuild
+git commit -m "ci(github-actions): Trigger push for CI tests to run" trigger-rebuild
+git push
