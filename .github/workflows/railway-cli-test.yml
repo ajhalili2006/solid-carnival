@@ -38,13 +38,13 @@ jobs:
           mkdir $GITHUB_WORKSPACE/.npm-global
           NPM_CONFIG_PREFIX=$GITHUB_WORKSPACE/.npm-global npm i -g @railway/cli
           $GITHUB_WORKSPACE/.npm-global/bin/railway --version
-  build-from-source:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build CLI from source
-        uses: MadeByThePinsHub/setup-railway-cli-action@main
-        with:
-          repo-url: https://github.com/railwayapp/cli
-          repo-branch: master
-      - run: railway --help
+  #build-from-source:
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - uses: actions/checkout@v2
+  #    - name: Build CLI from source
+  #      uses: MadeByThePinsHub/setup-railway-cli-action@main
+  #      with:
+  #        repo-url: https://github.com/railwayapp/cli
+  #        repo-branch: master
+  #    - run: railway --help
